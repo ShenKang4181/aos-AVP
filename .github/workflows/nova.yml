@@ -5,6 +5,7 @@ on:
     branches: [ nova ]
   pull_request:
     branches: [ nova ]
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
