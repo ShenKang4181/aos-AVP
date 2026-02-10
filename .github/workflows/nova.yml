@@ -50,3 +50,16 @@ jobs:
       run: |
         cd nova/Video
         ./gradlew aNR
+ # 新增：上传APK到GitHub Artifacts
+    - name: Upload APK Artifact
+      uses: actions/upload-artifact@v4  # 使用最新v4版本（兼容v3）
+      with:
+        # Artifact名称（在Actions面板显示的名称）
+        name: nova-video-player-apk
+        # APK的实际路径（CI环境中生成的位置）
+        path: |
+          nova/Video/build/outputs/apk/noamazon/release/*.apk
+          # 可选：同时上传manifest.xml（如果需要）
+          nova/Video/build/outputs/apk/noamazon/release/manifest.xml
+        # 可选：设置artifact保留时间（默认90天，最多90天）
+        retention-days: 30
